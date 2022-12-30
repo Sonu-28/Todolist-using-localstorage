@@ -14,8 +14,8 @@ window.addEventListener('load', ()=>{
  btn.addEventListener('click', function(e){
       e.preventDefault();
       if(input.value != ""){
-        list.innerHTML += `<li>${input.value}<button class="del">Delete<button></li>`;
-        arr.push(`<li>${input.value}<button class="del">Delete<button></li>`);
+        list.innerHTML += `<li><input type="radio" id='check'>${input.value}<button class="del" onclick="deleteFn('${input.value}', this)">Delete<button></li>`;
+        arr.push(`<li><input type="radio" id='check'>${input.value}<button class="del" onclick="deleteFn('${input.value}', this)">Delete<button></li>`);
         localStorage.setItem("todo", JSON.stringify(arr));
     } else {
         alert('Input Field is empty');
@@ -23,12 +23,9 @@ window.addEventListener('load', ()=>{
     input.value = "";
  })
 
-//  for(var i = 0; i< del.length; i++){
-//      del[i].addEventListener('click', function(){
-//         del[i].parentElement.remove();
-//      })
-//  }
-
-// const del = document.getElementById('del');
-
-// del.addEventListener('click', )
+ function deleteFn(todos, element){
+    let index = arr.indexOf(todos);
+    arr.splice(index, 1);
+    element.parentElement.remove();
+    localStorage.setItem('todo', JSON.stringify(arr));
+ }
