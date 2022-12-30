@@ -97,6 +97,15 @@ h3 {
 }
 
 
+#check {
+    margin-right: 1em;
+}
+
+#check:checked {
+    color: green;
+}
+
+
 @media screen and (max-width: 480px){
     
         h1 {
